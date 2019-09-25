@@ -11,31 +11,15 @@ mongoose.connect("mongodb://localhost/iron-beer", { useNewUrlParser: true, useUn
         console.log("THE DATABASE IS ON FIRE!", error)
     })
 
-const Beer = mongoose.model("Beer", {
-    name: String,
-    tagline: String,
-    first_brewed: String,
-    description: String,
-    image_url: String
-})
-
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
-app.get("/", (req, res)=> {
-    res.send("Working!")
-})
-
-app.get("/beers", (req, res)=> {
-    debugger
-    Beer.find({})
-        .then((beers)=> {
-            res.render("list-beers", {beers:beers})
-        })
-        .catch((err)=> {
-            res.send(err)
-        })
-})
+var beersRoute = require("./routes/beers")
+app.use("/", beersRoute)
+// app.use("/", require("./routes/beers")) the same, but with less code
+var indexRoute = require("./routes/index")
+app.use("/", indexRoute)
+// app.use("/", require("./routes/index")) the same, but with less code
 
 app.listen(3000,()=> {
     console.log("App is listening to port", 3000)
