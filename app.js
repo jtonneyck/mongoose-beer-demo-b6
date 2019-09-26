@@ -14,12 +14,11 @@ mongoose.connect("mongodb://localhost/iron-beer", { useNewUrlParser: true, useUn
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
-var beersRoute = require("./routes/beers")
-app.use("/", beersRoute)
-// app.use("/", require("./routes/beers")) the same, but with less code
-var indexRoute = require("./routes/index")
-app.use("/", indexRoute)
-// app.use("/", require("./routes/index")) the same, but with less code
+app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true })) 
+
+app.use("/", require("./routes/beers"))
+app.use("/", require("./routes/index"))
 
 app.listen(3000,()=> {
     console.log("App is listening to port", 3000)

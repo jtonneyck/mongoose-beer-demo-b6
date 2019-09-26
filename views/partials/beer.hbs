@@ -1,0 +1,14 @@
+<div class="beer-card">
+    <img src="{{image_url}}" alt="">
+    <div class="beer-info">
+        <h3>{{name}}</h3>
+        <h3>{{tagline}}</h3>
+        <h4>{{first_brewed}}</h4>
+        <p>{{description}}</p>
+    </div>
+    <div class="beer-navigation">
+        <a href="/beer/detail?beerId={{_id}}"><button>detail view</button></a>
+        <a href="/beer/delete?beerId={{_id}}"><button>Yuk, this beer is disgusting</button></a>
+    </div>
+</div>
+

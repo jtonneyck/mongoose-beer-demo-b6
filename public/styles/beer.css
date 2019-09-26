@@ -1,0 +1,30 @@
+.beer-card {
+    height: 60vh;
+    display: flex;
+    padding: 5%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.beer-card img {
+    height: 40%;
+}
+
+.beer-card  .beer-info {
+    height: 40%;
+}
+
+.beer-card .beer-info h3, .beer-card .beer-info h4 {
+    height: 15%;
+    margin: 0;
+}
+
+.beer-card .beer-info p {
+    height: 55%;
+    margin:0;
+    overflow-y: scroll;
+}
+
+.beer-card  .beer-navigation {
+    padding: 10px;
+    height: 20%;
+}

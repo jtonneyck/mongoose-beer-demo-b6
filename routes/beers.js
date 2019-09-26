@@ -12,20 +12,45 @@ app.get("/beers", (req, res)=> {
         })
 })
 
-app.get("/beer/:beerId", (req, res)=> {
+app.get("/beer/create", (req, res)=> {
+    res.render("create-beer")
+})
+
+app.post("/beer/create", (req,res)=> {
     debugger
-    Beer.findById(req.params.beerId)
+    console.log(req.body.name)
+    var newBeer = new Beer({
+            name: req.body.name,
+            tagline: req.body.tagline,
+            description: req.body.description
+        })
+    newBeer.save()
         .then((beer)=> {
-            res.render("beer-detail", {beer:beer})
+            debugger
+            res.redirect(`/beer/detail?beerId=${beer.id}`)
+        })
+        .catch((error)=> {
+            res.send(error)
+        })
+    // to do: get post data done
+    // to do: create new beer using beer model done
+    // to do: redirect user
+})
+
+app.get("/beer/detail", (req, res)=> {
+    debugger
+    Beer.findById(req.query.beerId)
+        .then((beer)=> {
+            res.render("detail-beer", {beer:beer})
         })
         .catch((err)=> {
             res.send(err)
         })
 })
 
-app.get("/beer/delete/:beerId", (req, res)=> {
+app.get("/beer/delete", (req, res)=> {
     debugger
-    Beer.findOneAndRemove(req.params.beerId)
+    Beer.findOneAndRemove(req.query.beerId)
         .then((beer)=> {
             res.redirect("/beers")
         })

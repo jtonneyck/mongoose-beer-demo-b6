@@ -1,0 +1,27 @@
+.create-beer-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+.create-beer-container form {
+    height: 60%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column
+}
+
+.create-beer-container form input {
+    height: 40px;
+    margin: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.create-beer-container form button {
+    width: 200px;
+    height: 40px;
+}
